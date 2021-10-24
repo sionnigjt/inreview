@@ -24,3 +24,4 @@ function test(...agrs) {
 }
 console.log(test(a, b));
 //结果
+console.log (typeof {1:1});
