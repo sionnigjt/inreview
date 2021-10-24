@@ -1,8 +1,8 @@
 let str: string = "test"
 let num: number = 24
 let boolen: boolean = true
-let u: undefined = undefined
-let n: null = null
+let und: undefined = undefined
+let nul: null = null
 let obj: Object = { x: 1 }
 let bigint: bigint = 100n
 let symbol: symbol = Symbol("test")
