@@ -19,10 +19,15 @@ let mysum3 = function (x: number, y?: number): number {
     return x
 }
 //默认参数,剩余参数同js
-
-//函数重载
-
 console.log("可选参数" + mysum3(2), mysum3(23, 4));
+//函数重载
+function sumStringOrNumber(a: string | number, b: string | number): string | number {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString()
+    }
+    return a + b
+}
+console.log("重载测试" + sumStringOrNumber(1, 1));
 //接口定义
 interface Sum {
     (x: number, y: number): number
