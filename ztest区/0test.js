@@ -29,3 +29,15 @@ console.log([1, "1"]);
 
 let duixiang = { 12: 23, "wewe": 2453, we: 123 }
 console.log(duixiang[12]);
+
+console.log([1, 23, 4].filter((value) => value == 23 ? false : true));
+class A {
+    constructor(a) {
+        this.a = a
+    }
+    show() {
+        console.log(this.a);
+    }
+}
+let afunction = new A("b")
+afunction.show()
