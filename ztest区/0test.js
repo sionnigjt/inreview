@@ -51,6 +51,8 @@ let time1 = new Date()
 let time2
 sleep(1000).then(() => {
     time2 = new Date()
-    console.log(new Date(time2 - time1).toLocaleDateString());
+    console.log(time2 - time1);
 })
 //两个date相减即为毫秒差
+
+let map=new Map([])

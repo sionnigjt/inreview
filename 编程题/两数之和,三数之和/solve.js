@@ -41,7 +41,7 @@ const ThreeSum = function (nums = []) {
                 //排重
                 while (hand < last && nums[hand] === nums[hand + 1]) hand++
                 while (hand < last && nums[last] === nums[last - 1]) last--
-                hand++,last--
+                hand++, last--
             }
             else if (sum > 0) {
                 last--
