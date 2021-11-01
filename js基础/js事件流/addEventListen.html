@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="first">first
+        <div class="second">
+            <label>click me
+                <input type="checkbox" class="target">
+            </label>
+        </div>
+    </div>
+</body>
+<script>
+    let div1 = document.getElementsByClassName('first')[0],
+        div2 = document.getElementsByClassName('second')[0],
+        target = document.getElementsByClassName('target')[0];
+    div1.addEventListener('click', (e) => {
+        console.log('first: ' + e.eventPhase + '1');
+    });
+    div1.addEventListener('click', (e) => {
+        console.log('first: ' + e.eventPhase + '2');
+    }, true);
+    div1.addEventListener('click', (e) => {
+        console.log('first: ' + e.eventPhase);
+    }, false);
+
+    div2.addEventListener('click', (e) => {
+        console.log('second: ' + e.eventPhase);
+    }, true);
+    div2.addEventListener('click', (e) => {
+        console.log('second: ' + e.eventPhase);
+
+    }, false);
+    target.addEventListener('click', (e) => {
+        console.log('target: ' + e.eventPhase);
+    }, true);
+    target.addEventListener('click', (e) => {
+        //添加阻止事件
+        e.stopPropagation()
+        console.log('target: ' + e.eventPhase);
+    }, false);
+</script>
+<!-- 没加阻止事件前的结果
+addEventListen.html:26 first: 11
+addEventListen.html:29 first: 12
+addEventListen.html:36 second: 1
+addEventListen.html:43 target: 2
+addEventListen.html:46 target: 2
+addEventListen.html:39 second: 3
+addEventListen.html:32 first: 3 -->
+
+<!-- 添加阻止事件的结果
+addEventListen.html:26 first: 11
+addEventListen.html:29 first: 12
+addEventListen.html:36 second: 1
+addEventListen.html:43 target: 2
+addEventListen.html:48 target: 2 -->
+
+</html>
