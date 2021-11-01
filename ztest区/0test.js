@@ -42,17 +42,36 @@ class A {
 let afunction = new A("b")
 afunction.show()
 
-
+//休眠函数,精度不够
 function sleep(time) {
     return new Promise(res => setTimeout(res, time))
 }
 let time1 = new Date()
 
 let time2
-sleep(1000).then(() => {
-    time2 = new Date()
-    console.log(time2 - time1);
-})
+// sleep(1000).then(() => {
+//     time2 = new Date()
+//     console.log(time2 - time1);
+// })
 //两个date相减即为毫秒差
 
-let map=new Map([])
+let map = new Map([])
+var entry = {
+    a: {
+        b: {
+            c: {
+                dd: 'abcdd'
+            }
+        },
+        d: {
+            xx: 'adxx'
+        },
+        e: 'ae'
+    }
+}
+console.log('//////');
+for (const key in entry) {
+    if (condition) {
+        
+    }
+}

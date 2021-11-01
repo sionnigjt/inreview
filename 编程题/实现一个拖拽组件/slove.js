@@ -35,7 +35,7 @@ class Dialog {
         this.dialog.innerText = this.text
         //阻止冒泡时model中div的click
         this.dialog.addEventListener('click', e => { e.stopPropagation() }, true)
-        //实现
+        //实现点击操作
         this.dialog.addEventListener('mousedown', this.handleMousedown.bind(this))
         document.addEventListener('mousemove', this.handleMousemove.bind(this))
         document.addEventListener('mouseup', this.handleMouseup.bind(this))
