@@ -1,3 +1,4 @@
+//title:判断输入的括号是否有效
 const isValid = function (s) {
     let map = {
         "[": "]",

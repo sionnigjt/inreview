@@ -1,3 +1,4 @@
+//title:按深度去除数组内部的多余的括号
 var arr = [[1, 2, 3], [2, 3, 4, 4, 45, 5], [6, 7, 8, 5]]
 function flatern1(arr = []) {
     //利用toString的性质

@@ -1,3 +1,4 @@
+//title:判断一个数组中是否两个值等于目标值(数组中有且只有唯一值)
 let nums = [2, 7, 11, 15], target = 17
 const twoSum = function (nums = [], target) {
     //验证数据

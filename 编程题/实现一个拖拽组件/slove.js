@@ -1,3 +1,5 @@
+//title:实现一个拖拽组件
+//前置知识:js事件流,理解stopPropagation此类函数
 class Dialog {
     constructor(text) {
         this.relativeX = 0
