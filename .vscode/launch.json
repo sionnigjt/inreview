@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "debugStdLib": true,
+            "justMyCode": false,
             "program": "${fileDirname}/${fileBasenameNoExtension}"
         }
     ]
