@@ -1,3 +1,7 @@
+//titel:https://leetcode-cn.com/problems/longest-harmonious-subsequence/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china
+//输入：nums = [1,3,2,2,5,2,3,7]
+// 输出：5
+// 解释：最长的和谐子序列是[3, 2, 2, 2, 3]
 function findLHS(nums) {
     //使用map对象遍历nums
     let map = new Map()

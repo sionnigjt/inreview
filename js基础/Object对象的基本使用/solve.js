@@ -15,6 +15,12 @@
     console.log(Object.assign({}, target));
     //作用:合并一个对象
     console.log(Object.assign(target, source));
+    let arr = [[[233], 2], 31, 23, 1]
+    let objarr = Object.assign({}, arr)
+    console.log(objarr, arr);
+    arr[0][0] = 1
+    console.log(objarr, arr);
+    //说明:对数组也是浅拷贝
 
 }
 //2,Object.creat():创造一个对象
