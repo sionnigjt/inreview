@@ -31,9 +31,8 @@ const canCompleteCircuit = function (gas = [], cost = []) {
 const canCompleteCircuit2 = function (gas, cost) {
     let n = gas.length;
     // 相当于图像中的坐标点和最低点
-    let sum = 0,
-        // 达到最低点 start就是对应的结果
-        minSum = Number.MAX_VALUE;
+    let sum = 0, minSum = Number.MAX_VALUE;
+    // 达到最低点 start就是对应的结果     
     let start = 0;
     for (let i = 0; i < n; i++) {
         sum += gas[i] - cost[i];

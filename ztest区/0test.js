@@ -70,8 +70,18 @@ var entry = {
     }
 }
 console.log('//////');
-for (const key in entry) {
-    if (condition) {
-        
+
+var array = ['a', 'b'];
+var elements = [0, 1, 2];
+var array2 = ['11', '22']
+array2.push.apply(array, elements);
+console.info(array, array2); // ["a", "b", 0, 1, 2]
+
+var obj = {
+    str: "sdd",
+    a: function () {
+        console.log(this.str);
     }
-}
+};
+
+setTimeout(obj.a.bind(obj), 1000);
