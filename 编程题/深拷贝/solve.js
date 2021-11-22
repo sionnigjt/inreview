@@ -47,3 +47,34 @@ let obj = {
     let set = new Set(arr)
     console.log([...set].sort((a, b) => a - b));
 }
+{
+    let obj = {
+        1: {
+            23: 34,
+            2: {
+                2: 34
+            }
+        },
+        23: {
+            1: 32
+        }
+    }
+    const copy = function (obj) {
+        let copyObj = {}
+        //条件判断
+        if (typeof obj != 'object') {
+            return obj
+        }
+        //遍历寻找
+        for (const key of Object.keys(obj)) {
+            copyObj[key] = copy(obj[key])
+        }
+        return copyObj
+    }
+    //测试
+    let testobj = copy(obj)
+    console.log(testobj, obj);
+    obj[1] = 3
+    console.log(testobj, obj);
+
+}

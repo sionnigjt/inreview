@@ -16,7 +16,7 @@
 }
 {
     //使用 (?=p):匹配字符p的前一个字符
-    console.log("test pstring".replace(/(?=string)/g, '?'));
+    console.log("匹配字符p的前一个字符"+"test pstring".replace(/(?=string)/g, '?'));
     //使用(?!=p):匹配除字符p的前一个字符的所有字符
     console.log("test pstring".replace(/(?!=string)/g, '?'));
     //使用(?<=p):匹配字符p的后一个字符

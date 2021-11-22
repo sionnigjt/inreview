@@ -1,4 +1,4 @@
-function houzhui(str = "") {
+function suffix(str = "") {
     //先转后缀表达式计算
     //形如:2+3*2=> 232*+
     // 如果遇到左括号则直接入栈
@@ -7,34 +7,45 @@ function houzhui(str = "") {
     // 如果栈外的操作符优先级低于或等于栈内的优先级，输出栈内的符号，并入栈栈外的符号
     // 中缀表达式遍历完成，但是栈中还有符号存在，一一出栈输出
     let map = {//优先级
-        '(': 1,
+        '(': -99,
         '+': 2,
         '-': 2,
         '*': 3,
         '/': 3,
-        ')': 4
-    }, mapExist = ['(', '+', '-', '*', '/', ')'];
-    let ansArry = [], tmpArry = [], strArry = str.split('');
-    //判断数字
-    let number = ''
+        '^': 4,
+        '.': 5,
+        ')': 99
+    }, mapExist = ['(', '+', '-', '*', '/', '^', '.', ')'];
+    //解决小数点前没得数字
+    let ansStack = [], tmpStack = [], strArry = solveSpotZero(str.replaceAll(/\s/g, '')).split(/(?!=\()/g);
+    // 解决初始负数的问题
+    if (strArry[0] == '-') {
+        strArry.shift()
+        strArry[0] = "-" + strArry[0]
+    }
+    // 解决-(+(问题
+
+    // 判断数字
+    // console.log(strArry);
+    let number = ""
     for (const key of strArry) {
         //不是数字
         if (mapExist.includes(key)) {
-            ansArry.push(number)
-            number = ''
+            ansStack.push(number)
+            number = ""
             //用函数判断这个字符是否push
-            operaSymbol(key, tmpArry, ansArry)
+            operaSymbol(key, tmpStack, ansStack)
         }
         else {
             number += key
         }
     }
-    ansArry.push(number)
+    ansStack.push(number)
     //判断剩余的参数
-    while (tmpArry.length >= 1) {
-        ansArry.push(tmpArry.pop())
+    while (tmpStack.length >= 1) {
+        ansStack.push(tmpStack.pop())
     }
-
+    return ansStack.join('').split('')
     function operaSymbol(char = '', tmpArry = [], ansArry = []) {
         let laststr = tmpArry[tmpArry.length - 1]
         //判断1:tmpArry为空
@@ -64,35 +75,68 @@ function houzhui(str = "") {
             }
             tmpArry.push(char)
         }
-        //其他情况:
+        //其他情况:一般用不到
         else {
             tmpArry.push(char)
         }
     }
-    return ansArry.join('').split('')
+    function solveSpotZero(tmp = '') {
+        //使用正则
+        let tmp1 = tmp.split('')
+        let count = 0
+        for (const key of tmp.matchAll(/.(?=\.)/g)) {
+            if (typeof Number(key[0]) == 'NaN') {
+                // console.log(key.index, key[0]);
+                tmp1.splice(key.index + 1 + count++, -1, "0")
+            }
+
+        }
+        return tmp1.join('')
+        //使用双指针
+
+    }
+
 }
 function solve(str = []) {
     let stack = []
     for (const key of str) {
         if (key == '+') {
-            stack.push(stack.pop() + stack.pop())
+            stack.push(Number(stack.pop()) + Number(stack.pop()))
         }
         else if (key == '-') {
-            stack.push(stack.pop() - stack.pop())
+            stack.push(Number(stack.pop()) - Number(stack.pop()))
         }
         else if (key == '*') {
-            stack.push(stack.pop() * stack.pop())
+            stack.push(Number(stack.pop()) * Number(stack.pop()))
         }
         else if (key == '/') {
-            stack.push(1 / stack.pop() * stack.pop())
+            stack.push(1 / Number(stack.pop()) * Number(stack.pop()))
+        }
+        else if (key == '^') {
+            //由于顺序改变
+            let index = stack.pop()
+            let base = stack.pop()
+            stack.push(Math.pow(base, index))
+        }
+        else if (key == '.') {
+            let index = stack.pop()
+            let base = stack.pop()
+            console.log(index, base, Number(base + '.' + index));
+            stack.push(Number(base + '.' + index))
         }
         else {
-            stack.push(Number(key))
+            stack.push(key)
+
         }
     }
-    return stack[0]
+    //判断是否有小数
+    let _length = stack[0].toString().split('.')[1] ? stack[0].toString().split('.')[1].length : 0
+    return _length > 4 ? _length < 8 ? stack[0].toFixed(_length) : stack[0].toFixed(8).replace(/(0)+$/, '') : stack[0]
+
 }
-var test1 = '1+(2*3+4)+5'
+var test1 = '1+(2*2+(1* 2))*7+2^2'
 console.log(test1)
-console.log(houzhui(test1));
-console.log(solve(houzhui(test1)));
+console.log(suffix(test1));
+console.log(solve(suffix(test1)));
+// console.log(Number(test1).toFixed(6));
+
