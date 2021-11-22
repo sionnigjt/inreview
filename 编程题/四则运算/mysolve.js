@@ -17,16 +17,32 @@ function suffix(str = "") {
         ')': 99
     }, mapExist = ['(', '+', '-', '*', '/', '^', '.', ')'];
     //解决小数点前没得数字
-    let ansStack = [], tmpStack = [], strArry = solveSpotZero(str.replaceAll(/\s/g, '')).split(/(?!=\()/g);
+    let ansStack = [], tmpStack = [], copyAry = [], strArry = solveSpotZero(str.replaceAll(/\s/g, '')).split(/\b/);
     // 解决初始负数的问题
     if (strArry[0] == '-') {
         strArry.shift()
         strArry[0] = "-" + strArry[0]
     }
-    // 解决-(+(问题
-
-    // 判断数字
     // console.log(strArry);
+    // 解决-(+(问题
+    for (const key of strArry) {
+        if (!/\d+/.test(key)) {
+            if (key.length == 1) {
+                copyAry.push(key)
+                continue
+            }
+            else {
+                for (const iterator of key.split('')) {
+                    // console.log(iterator);
+                    copyAry.push(iterator)
+                }
+            }
+        }
+        else copyAry.push(key)
+    }
+    strArry = copyAry
+    // 判断数字
+    // console.log("查看", strArry);
     let number = ""
     for (const key of strArry) {
         //不是数字
@@ -45,7 +61,11 @@ function suffix(str = "") {
     while (tmpStack.length >= 1) {
         ansStack.push(tmpStack.pop())
     }
-    return ansStack.join('').split('')
+    return ansStack.filter((value) => {
+        if (value != '') {
+            return value
+        }
+    })
     function operaSymbol(char = '', tmpArry = [], ansArry = []) {
         let laststr = tmpArry[tmpArry.length - 1]
         //判断1:tmpArry为空
@@ -134,9 +154,9 @@ function solve(str = []) {
     return _length > 4 ? _length < 8 ? stack[0].toFixed(_length) : stack[0].toFixed(8).replace(/(0)+$/, '') : stack[0]
 
 }
-var test1 = '1+(2*2+(1* 2))*7+2^2'
-console.log(test1)
-console.log(suffix(test1));
+var test1 = '11+12*(2+2*2)'
+// console.log(test1)
+// console.log(suffix(test1));
 console.log(solve(suffix(test1)));
 // console.log(Number(test1).toFixed(6));
 
