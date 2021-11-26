@@ -14,8 +14,9 @@ function suffix(str = "") {
         '/': 3,
         '^': 4,
         '.': 5,
+        'sin': 6,
         ')': 99
-    }, mapExist = ['(', '+', '-', '*', '/', '^', '.', ')'];
+    }, mapExist = ['(', '+', '-', '*', '/', '^', '.', ')', 'sin'];
     //解决小数点前没得数字
     let ansStack = [], tmpStack = [], copyAry = [], strArry = solveSpotZero(str.replaceAll(/\s/g, '')).split(/\b/);
     // 解决初始负数的问题
@@ -144,6 +145,9 @@ function solve(str = []) {
             console.log(index, base, Number(base + '.' + index));
             stack.push(Number(base + '.' + index))
         }
+        else if (key == 'sin') {
+            stack.push(Math.sin(stack.pop()))
+        }
         else {
             stack.push(key)
 
@@ -154,9 +158,10 @@ function solve(str = []) {
     return _length > 4 ? _length < 8 ? stack[0].toFixed(_length) : stack[0].toFixed(8).replace(/(0)+$/, '') : stack[0]
 
 }
-var test1 = '11+12*(2+2*2)'
+var test1 = '(1)sin +123+32*(23+12*23)'
 // console.log(test1)
-// console.log(suffix(test1));
+console.log(suffix(test1));
 console.log(solve(suffix(test1)));
 // console.log(Number(test1).toFixed(6));
+
 

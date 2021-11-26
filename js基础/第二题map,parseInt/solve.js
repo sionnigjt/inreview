@@ -5,11 +5,13 @@ console.log(parseInt("110", 2)) //二进制转换
 console.log(("6").toString(2))
 //var new_array = arr.map(function callback(currentValue[,index[, array]]) {
 // Return element for new_array}[, thisArg])
-['10', '10', '10', '10', '10'].map(parseInt);
+Array.from(['10', '10', '10', '10', '10']).map(parseInt);
 //等效于
-['10', '10', '10', '10', '10'].map((item, index) => {
+Array.from(['10', '10', '10', '10', '10']).map((item, index) => {
     return parseInt(item, index)
 })
 //即parseInt('10',index)
 //解决方法
-['10', '10', '10', '10'].map(n=>parent(n));
+console.log(Array.from(['10', '10', '10', '10']).map(n => parseInt(n)));
+
+
