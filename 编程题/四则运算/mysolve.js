@@ -158,7 +158,7 @@ function solve(str = []) {
     return _length > 4 ? _length < 8 ? stack[0].toFixed(_length) : stack[0].toFixed(8).replace(/(0)+$/, '') : stack[0]
 
 }
-var test1 = '(1)sin +123+32*(23+12*23)'
+var test1 = ' 2+123+32*(23+12*23)'
 // console.log(test1)
 console.log(suffix(test1));
 console.log(solve(suffix(test1)));
