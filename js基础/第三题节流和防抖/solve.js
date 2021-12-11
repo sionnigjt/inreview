@@ -7,6 +7,7 @@ function debounce(fn, ...str) {
         }, 2000);
     };
 }
+// document.getElementsByClassName("wd")
 function sayHi(str) {
     console.log(str);
 }
@@ -52,3 +53,6 @@ inp.addEventListener('input', throttle2(sayHi, "节流")); // 节流
 //     console.log(e.target.innerWidth, e.target.innerHeight);
 // }
 // window.addEventListener('resize', throttle(sayHi));
+for (const children of obdocument.getElementsByClassName("option-list")) {
+    children.children[0]
+}
