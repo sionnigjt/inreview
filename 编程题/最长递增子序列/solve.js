@@ -1,5 +1,5 @@
 //递归:暴力求解+剪枝
-let nums = [0, 1, 0, 3, 2, 3]
+let nums = [3, 2, 3, 2, 5]
 
 function sovle(nums = []) {
     //定义变量
@@ -49,25 +49,28 @@ function solve2(nums = []) {
 
 //快慢指针
 function sovle3(nums = []) {
-    let len = nums.length
-    //定义快慢指针
-    let fast = 0, ans = 1
-    for (const slow in nums) {
-        //改变变量
-        let current = nums[slow], count = 1
-        //非连续没法跨域选值
-        fast = Number(slow) + 1
-        while (fast < len) {
-            //满足递增
-            if (current < nums[fast]) {
-                current = nums[fast]
-                count++
+    var n = nums.length;
+    var dp = [nums[0]];
+    for (let i = 1; i < n; i++) {
+        //有递增加入元素
+        if (nums[i] > dp[dp.length - 1])
+            dp.push(nums[i]);
+        //无递增修改元素
+        else {
+            //在递增dp序列中找到修改值:使用二分法
+            var left = 0, right = dp.length - 1;
+            while (left < right) {
+                var mid = Math.floor((left + right) / 2);
+                if (dp[mid] >= nums[i])
+                    right = mid;
+                else
+                    left = mid + 1;
             }
-            fast++
+            dp[left] = nums[i];
         }
-        ans = Math.max(ans, count)
     }
-    return ans
+
+    return dp.length;
 }
 function test_time(func) {
     let start = Date.now()
@@ -83,30 +86,3 @@ function test_time(func) {
 test_time(sovle, nums)
 test_time(solve2, nums)
 test_time(sovle3, nums)
-/**
- * @param {number[]} nums
- * @return {number}
- */
-
-var lengthOfLIS = function (nums) {
-    var n = nums.length;
-    var dp = [nums[0]];
-
-    for (let i = 1; i < n; i++) {
-        if (nums[i] > dp[dp.length - 1])
-            dp.push(nums[i]);
-        else {
-            var left = 0, right = dp.length - 1;
-            while (left < right) {
-                var mid = Math.floor((left + right) / 2);
-                if (dp[mid] >= nums[i])
-                    right = mid;
-                else
-                    left = mid + 1;
-            }
-            dp[left] = nums[i];
-        }
-    }
-
-    return dp.length;
-};
