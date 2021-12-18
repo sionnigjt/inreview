@@ -47,7 +47,7 @@ function solve2(nums = []) {
     return Math.max(...ans)
 }
 
-//快慢指针
+//dp实现
 function sovle3(nums = []) {
     var n = nums.length;
     var dp = [nums[0]];
