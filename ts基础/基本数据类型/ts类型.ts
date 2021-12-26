@@ -54,13 +54,13 @@
     //console.log(ntest = testUnknown);//不能将类型“unknown”分配给类型“string”
 }
 //对象类型 Number、String、Boolean、Symbol 
-{
+{           
     let num_littel: number
     let num_big: Number
     // console.log(num_littel = num_big);//不能将类型“Number”分配给类型“number”。
     console.log(num_big = num_littel);
 }
-//结论原始类型兼容对象类型
+//结论原始类型兼容对象类型                                                      
 
 //object:所有非原始类型、Object:拥有 toString、hasOwnProperty 方法的类型包括原始类型和非原始类型 和 {}
 {
