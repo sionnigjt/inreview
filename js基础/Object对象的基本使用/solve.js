@@ -37,3 +37,21 @@
     Object.create(preson).isshow()
 }
 //后续待定
+//Object.defineProperty():修改对象属性
+{
+    let obj = {}
+    let Sy = Symbol('A')
+    {
+        //测试
+        obj[Sy] = "A"
+        Object.defineProperty(obj, 'A', {
+            value: 1,//属性值
+            //都是默认false的
+            configurable: true,//能配置的,可删除的
+            enumerable: true,//是否出现枚举属性中
+            writable: true,//是否可写入,
+        })
+        obj.A = 2
+        console.log(obj, obj.A);
+    }
+}
