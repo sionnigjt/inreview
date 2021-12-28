@@ -16,15 +16,21 @@ let obj, A, B
     //特点 symbol在循环中,Object.keys()都不显示,Reflect.ownKeys中可以显示
     console.log(Reflect.ownKeys(obj), Object.keys(obj));
 }
-//输出json
+//与json相关
 {
     //直接输出json,不会有symbol语句
     console.log(JSON.stringify(obj), obj);
-    //利用Obj
+    //你可能回想利用Object.defineProperty的设置枚举为true破解
     Object.defineProperty(obj, A, {
         enumerable: true,
         configurable: true,
         value: "A"
     })
+    //事实上并不可以,json不支持symbol
     console.log(JSON.stringify(obj), Object.keys(obj), Object.getOwnPropertySymbols(obj));
+}
+//主要作用:私有变量
+{
+    let A = Symbol()
+    
 }
