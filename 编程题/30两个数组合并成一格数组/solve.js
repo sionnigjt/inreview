@@ -14,6 +14,7 @@ function mergeArray1(a1, a2) {
         return item
     })
 
+
 }
 function mergeArray2(a1, a2) {
     //时间复杂度过高不予考虑,估计O(n^2)
