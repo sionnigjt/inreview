@@ -5,14 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-node",
+            "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
+            "program": "${file}",
+            "args": [],
+            "runtimeArgs": [
+                "16.13.1"
             ],
-            "justMyCode": false,
-            "program": "${fileDirname}/${fileBasenameNoExtension}"
-        }
+            "windows": {
+                "runtimeExecutable": "nvs.cmd"
+            },
+            "osx": {
+                "runtimeExecutable": "nvs"
+            },
+            "linux": {
+                "runtimeExecutable": "nvs"
+            }
+        },
     ]
 }
