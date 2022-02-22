@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box-shadow">box-shadow方案</div>
+    <div class="outline">outline方案:可以使用虚线效果</div>
+    <div class="outline addline">虚线效果</div>
+</body>
+<style>
+    .box-shadow {
+        width: 100px;
+        height: 100px;
+        margin: 50px auto;
+        background: yellowgreen;
+        box-shadow: 0 0 0 10px #655,
+            0 0 0 15px deeppink,
+            0 2px 5px 15px rgba(0, 0, 0, .6);
+    }
+
+    .outline {
+        width: 100px;
+        height: 100px;
+        margin: 50px auto;
+        background: yellowgreen;
+        border: 10px solid #655;
+        outline: 5px solid deeppink;
+    }
+
+    .addline {
+        border: 1px dashed rgb(145, 144, 144);
+        outline: 5px solid yellowgreen;
+    }
+</style>
+
+</html>

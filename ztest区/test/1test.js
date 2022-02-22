@@ -6,5 +6,16 @@
     console.log({}.toString(), [].toString(), true.toString());
     console.log(Boolean([]), Boolean([].toString()), Boolean(Object), Boolean({}), Boolean(0));
 }
-
-
+let a = new Object();
+console.log(a.toString());
+console.log(typeof ['12', 1], ~0, !![]);
+function foo() {
+    try {
+        return 42;
+    }
+    finally {
+        console.log("Hello");
+    }
+    console.log("never runs");
+}
+console.log(foo());

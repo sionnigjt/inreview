@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="item1 ">背景会延伸到边框所在的区域下层,即border区域</div>
+        <div class="item2">溢出部分更改到padding区域即可 </div> 
+    </div>
+
+
+</body>
+<style>
+    .box {
+
+        margin: 10px;
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .item1,
+    .item2 {
+        background: #4d2c2c;
+        width: 200px;
+        height: 200px;
+        border: 10px dashed hsla(0, 0%, 100%, .5);
+        padding: 10px;
+
+
+    }
+
+    .item2 {
+        border: 10px dashed rgba(211, 26, 26, 0.5);
+        background-clip: padding-box;
+
+    }
+</style>
+
+</html>

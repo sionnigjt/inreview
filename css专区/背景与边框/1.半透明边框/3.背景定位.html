@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="img">利用background-position改变背景偏移量</div>
+    <br>
+    <div class="img2">background-origin该变偏移位置参考点,默认padding部分</div>
+</body>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .img {
+        text-align: center;
+        height: 400px;
+        padding: 20px;
+        background: url(https://tse3-mm.cn.bing.net/th/id/OIP-C.FDZyOMMUlEkuBJzJdqyXaAHaFj?pid=ImgDet&rs=1) no-repeat center #58a;
+         /* 此时rigth等位置从padding左上开始计算 ,删除padding值偏移位置无影响*/
+        background-position: right 20px bottom 10px;
+    }
+
+    .img2 {
+        text-align: center;
+        height: 400px;
+        padding: 20px;
+        background: url(https://tse3-mm.cn.bing.net/th/id/OIP-C.FDZyOMMUlEkuBJzJdqyXaAHaFj?pid=ImgDet&rs=1) no-repeat center #58a;
+        /* 此时rigth等位置从content左上开始计算 */
+        background-origin: content-box;
+        background-position: right 20px bottom 10px;
+    }
+</style>
+
+</html>
