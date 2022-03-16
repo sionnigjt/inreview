@@ -1,4 +1,4 @@
-arr = [1, 3, 4, 6, 7, 8, 9, 111, 123, 14, 5]
+arr = [1, 3, 4, 6, 7, 8, 9, 111, 123, 999, 1000, 1001, 1002, 1003]
 len = 5
 //it is my sovle
 function find_max_dots(arr, len) {
@@ -25,7 +25,7 @@ function find_max_dots2(arr, len) {
 }
 function run_time(func, ...arg) {
     console.time();
-    func.apply(null, arg)
+    console.log(func.apply(null, arg));
     console.timeEnd()
 }
 run_time(find_max_dots, arr, len);

@@ -19,3 +19,12 @@ function foo() {
     console.log("never runs");
 }
 console.log(foo());
+{
+    let a = {
+        name: 'hi',
+        toString() {
+            return '12'
+        }
+    }
+    console.log('12 '== a);
+}
