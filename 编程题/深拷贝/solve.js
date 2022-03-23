@@ -17,36 +17,15 @@ let obj = {
     obj[1][2][2] = 1
     console.log(newobj);
 }
-//递归函数实现对象深拷贝
+//JSON的深拷贝
 {
-    function copy(obj) {
-        if (typeof obj !== 'object') {
-            return obj
-        }
-        let copyTarget = {};
-        for (const item in obj) {
-            copyTarget[item] = copy(obj[item])
-        }
-        return copyTarget
+    const copy = (obj) => {
+        return JSON.parse(JSON.stringify(obj))
     }
-    let testobj = copy(obj)
-    console.log(testobj);
-    obj[1][2][2] = 2
-    console.log(testobj);
+
 }
-{
-    //遍历二叉树
-    let object = {
-        1: 2,
-        3: 4,
-        2: 4,
-        "2": 3
-    }
-    console.log(Object.keys(object), Object.values(object), object);
-    let arr = [1, 7, 2, 3, 4, 5]
-    let set = new Set(arr)
-    console.log([...set].sort((a, b) => a - b));
-}
+
+//简单深拷贝
 {
     let obj = {
         1: {
@@ -60,21 +39,71 @@ let obj = {
         }
     }
     const copy = function (obj) {
-        let copyObj = {}
+        let copyObj = obj instanceof Array === 'object' ? [] : {}
         //条件判断
         if (typeof obj != 'object') {
             return obj
         }
         //遍历寻找
-        for (const key of Object.keys(obj)) {
+        for (const key in obj) {
             copyObj[key] = copy(obj[key])
         }
         return copyObj
     }
     //测试
     let testobj = copy(obj)
-    console.log(testobj, obj);
     obj[1] = 3
-    console.log(testobj, obj);
+    console.log("object测试", testobj, obj);
 
+}
+//高级深拷贝:考虑数组,date,正则,循环引用
+{
+    function Typeof(arg) {
+        return Object.prototype.toString.call(arg).slice(8, -1).toLowerCase()
+    }
+    let obj = {
+        1: {
+            23: 34,
+            2: {
+                2: 34
+            }
+        },
+        23: {
+            1: 32
+        }
+    }
+    const deepclone = (target, map = new WeakMap()) => {
+        //循环引用验证
+        if (map.get(target)) {
+            return target
+        }
+        //获取构造函数
+        let constructor = target.constructor;
+        //只考虑object和array的深拷贝,其他直接返回
+        if (Typeof(target) !== 'object' && Typeof(target) !== 'array') {
+            if (Typeof(target) === 'date') {
+                return new constructor(target)
+            }
+            return target
+        }
+        else {
+            //设置循环引用标识符
+            map.set(target, true)
+            const copyTarget = Typeof(target) === 'array' ? [] : {}
+            for (const key in target) {
+                copyTarget[key] = deepclone(target[key], map)
+            }
+            return copyTarget
+        }
+    }
+    let testobj = deepclone(obj)
+    obj[1] = 3
+    console.log("object测试", testobj, obj);
+    let arr = [[1, 2], [3, 4]]
+    let copyarr = deepclone(arr)
+    arr[0] = 1
+    console.log("array测试", copyarr, arr);
+    let date =new Date()
+    let copydate = deepclone(date)
+    console.log(copydate,date);
 }
