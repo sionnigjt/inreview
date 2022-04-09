@@ -32,5 +32,46 @@ let obj, A, B
 //主要作用:私有变量
 {
     let A = Symbol()
-    
+
+}
+//Symbol.toPrimitive
+{
+    // 一个没有提供 Symbol.toPrimitive 属性的对象，参与运算时的输出结果
+    var obj1 = {
+        get [Symbol.toStringTag]() {
+            return "Validator";
+        },
+        toString() {
+            return "str"
+        },
+        valueOf() {
+            return "123"
+        },
+        a: 12
+    };
+    console.log(+obj1);     // NaN
+    console.log(`${obj1}`); // "[object Object]"
+    console.log(obj1 + "", Object.prototype.toString.call(obj1)); // "[object Object]"
+
+    // 接下面声明一个对象，手动赋予了 Symbol.toPrimitive 属性，再来查看输出结果
+    var obj2 = {
+        [Symbol.toPrimitive](hint) {
+            if (hint == "number") {
+                return 10;
+            }
+            else if (hint == "string") {
+                return "hello";
+            }
+            else {
+                console.log(hint);
+                return true;
+            }
+
+        },
+
+
+    };
+    console.log(+obj2);     // 10      -- hint 参数值是 "number"
+    console.log(`${obj2}`); // "hello" -- hint 参数值是 "string"
+    console.log(obj2 + "", Object.prototype.toString.call(obj2)); // "true"  -- hint 参数值是 "default"
 }

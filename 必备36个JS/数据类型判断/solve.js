@@ -4,10 +4,10 @@ let thisNumber = 123//NaN是number类型
 let thisNull = null
 let thisSymbol = Symbol()
 let thisUnderfined = undefined
-let thisBoolen = true//注意 new Boolean是对象
+let thisBoolean = true//注意 new Boolean是对象
 let thisBigInt = BigInt(123456)
 //保存原始值
-let originalType = [thisString, thisNumber, thisNull, thisSymbol, thisUnderfined, thisBoolen, thisBigInt]
+let originalType = [thisString, thisNumber, thisNull, thisSymbol, thisUnderfined, thisBoolean, thisBigInt]
 //几种对象
 let thisArray = ["1", "2", "3"]
 let thisDate = new Date()
