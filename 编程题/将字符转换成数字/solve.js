@@ -10,5 +10,4 @@ var myAtoi = function (s) {
 
     return Number(s)
 };
-console.log(myAtoi('-123453q'));
-console.log(isNaN());
+console.log(myAtoi('-123453.1'));

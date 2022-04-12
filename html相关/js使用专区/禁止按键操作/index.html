@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+禁止页面操作
+</body>
+<script >
+    //禁止按键
+    window.onkeydown=(key)=>{
+        if(key){
+           window.event.returnValue = false;
+
+        }
+       console.log(key.code);
+    }
+    //选择时禁止
+    window.onselectstart = function () {
+            window.event.returnValue = false;
+
+        };
+    //鼠标左击右击都禁止
+     document.onmousedown= ()=>false
+     //禁止右击
+     document.oncontextmenu = function () {
+                return false;
+            }
+
+</script>
+</html>

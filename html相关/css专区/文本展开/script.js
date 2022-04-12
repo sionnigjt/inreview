@@ -9,6 +9,7 @@ words.forEach(word => {
     initialSpan.textContent = initial;
     initialSpan.className = "initial";
     abbr.append(initialSpan);
+    //后续字符
     restLetters.forEach(letter => {
         let hiddenSpan = document.createElement("span");
         hiddenSpan.textContent = letter;

@@ -1,4 +1,4 @@
-//递归求解
+//递归求解:回溯算法
 var permute = function (nums) {
     let ans = [], tempList = []
     function backtrack(nums) {
@@ -18,4 +18,4 @@ var permute = function (nums) {
     backtrack(nums)
     return ans
 }
-console.log(permute([1, 2, 3]));
+console.log(permute([1, 2, 3, 4]));
